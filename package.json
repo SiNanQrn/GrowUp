@@ -1,0 +1,22 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiNanQrn/GrowUp.git"
+  }, 
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SiNanQrn/GrowUp/issues"
+  },
+  "homepage": "https://github.com/SiNanQrn/GrowUp#readme",
+  "devDependencies": {
+    "wx-chart": "^1.0.1"
+  }
+}
