@@ -1,0 +1,141 @@
+<!-- Title -->
+<van-row>
+  <van-col span="6" offset="1">
+    <van-icon name="arrow-left" />
+  </van-col>
+  <van-col span="17" class="list-title">Make your plan</van-col>
+</van-row>
+<!-- 图片 -->
+<view class="list-image">
+  <view>
+    <image class="img01" src="../../images/img02.png"></image>
+  </view>
+  <view>
+    <image class="img02" src="../../images/img01.png"></image>
+  </view>
+</view>
+<!-- 健康管理 -->
+<view class="card">
+  <view class="card-title">
+    <view class="card-title-right">
+      <van-icon name="shield-o" class="title-right-icon" />
+      <text class="title-right-word">健康管理</text>
+    </view>
+    <view class="card-title-left">
+      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" bind:click="showPopup" />
+    </view>
+  </view>
+  <view class="card-list">
+    <view class="card-list-item">
+      <text class="item-name">1、运动</text>
+      <text class="item-times">每天一次</text>
+      <text class="item-type">勾选</text>
+    </view>
+    <view class="card-list-item">
+      <text class="item-name">2、早睡</text>
+      <text class="item-times">每天一次</text>
+      <text class="item-type">勾选</text>
+    </view>
+  </view>
+</view>
+<!-- 职业成长 -->
+<view class="card">
+  <view class="card-title">
+    <view class="card-title-right">
+      <van-icon name="balance-list-o" class="title-right-icon" />
+      <text class="title-right-word">职业成长</text>
+    </view>
+    <view class="card-title-left">
+      <van-icon name="plus" class="title-left-icon" />
+    </view>
+  </view>
+  <view class="card-list">
+    <view>1、运动</view>
+    <view>2、早睡</view>
+    <view>2、早睡</view>
+  </view>
+</view>
+<!-- 财务目标 -->
+<view class="card">
+  <view class="card-title">
+    <view class="card-title-right">
+      <van-icon name="balance-o" class="title-right-icon" />
+      <text class="title-right-word">财务目标</text>
+    </view>
+    <view class="card-title-left">
+      <van-icon name="plus" class="title-left-icon" />
+    </view>
+  </view>
+  <view class="card-list">
+    <view>1、运动</view>
+    <view>2、早睡</view>
+    <view>2、早睡</view>
+  </view>
+</view>
+<!-- 兴趣发展 -->
+<view class="card">
+  <view class="card-title">
+    <view class="card-title-right">
+      <van-icon name="audio" class="title-right-icon" />
+      <text class="title-right-word">兴趣发展</text>
+    </view>
+    <view class="card-title-left">
+      <van-icon name="plus" class="title-left-icon" />
+    </view>
+  </view>
+  <view class="card-list">
+    <view>1、运动</view>
+    <view>2、早睡</view>
+    <view>2、早睡</view>
+  </view>
+</view>
+<!-- 弹窗 -->
+<van-popup position="bottom" show="{{ show }}" duration="200" round="5" custom-style="height: 50%" bind:close="onClose">
+  <!-- 图片 -->
+  <view class="card-popup">
+    <view class="card-popup-img">
+      <image class="img03" src="../../images/img03.png"></image>
+    </view>
+    <view class="card-popup-text">
+      <text>健康管理</text>
+    </view>
+    <view class="card-popup-icon">
+      <van-icon name="success" />
+    </view>
+  </view>
+  <!-- 表单todo -->
+  <van-field value="{{ value }}" label="TODO名称" placeholder="请输入TODO名称" border="{{ false }}" bind:change="onChange" />
+  <!-- 表单周期 -->
+  <view class="to-do-cycle">
+    <view class="to-do-cycle-title">
+      设置周期
+    </view>
+    <view class="to-do-cycle-times">
+      <van-radio-group value="{{ radio }}" bind:change="checkCycle">
+        <van-cell-group>
+          <van-cell title="每天一次" clickable data-name="1" bind:click="onClick">
+            <van-radio name="1" checked-color="#A5D63F" slot="right-icon" />
+          </van-cell>
+          <van-cell title="每周一次" clickable data-name="2" bind:click="onClick">
+            <van-radio name="2" checked-color="#A5D63F" slot="right-icon" />
+          </van-cell>
+          <van-cell title="每月一次" clickable data-name="3" bind:click="onClick">
+            <van-radio name="3" checked-color="#A5D63F" slot="right-icon" />
+          </van-cell>
+        </van-cell-group>
+      </van-radio-group>
+    </view>
+  </view>
+  <!-- 表单打卡方式 -->
+  <view class="to-do-type">
+    <view class="to-do-type-title">
+      打卡方式
+    </view>
+    <view class="to-do-type-times">
+      <van-radio-group value="{{ radio }}" bind:change="onChange" direction="horizontal">
+        <van-radio name="1" checked-color="#A5D63F">勾选</van-radio>
+        <van-radio name="2" checked-color="#A5D63F">进度条</van-radio>
+      </van-radio-group>
+    </view>
+  </view>
+</van-popup>

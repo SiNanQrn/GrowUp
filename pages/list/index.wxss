@@ -1,0 +1,153 @@
+/* pages/list/index.wxss */
+.list-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  letter-spacing: 0.1rpx;
+  color: rgba(159, 191, 90, 1);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.list-image {
+  margin-top: 40rpx;
+  height: 240rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.img01 {
+  width: 190rpx;
+  height: 130rpx;
+}
+
+.img02 {
+  width: 330rpx;
+  height: 240rpx;
+}
+
+.card {
+  width: 650rpx;
+  margin: 0 auto;
+  margin-bottom: 25rpx;
+  padding: 0px 0px 5px 0px;
+  /* border: 1px solid #eeeeee; */
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, .1);
+  border-radius: 5px;
+}
+
+.card-title {
+  height: 65rpx;
+  line-height: 65rpx;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(159, 191, 90, 1);
+}
+
+.card-title-right {
+  font-size: 16px;
+  width: 100px;
+}
+
+.title-right-icon {
+  margin: 0 5px 0 10px;
+}
+
+.title-left-icon {
+  margin: 0 15px 0 10px;
+}
+
+.card-list {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(128, 128, 128, 1);
+  width: 580rpx;
+  font-size: 15px;
+  margin: 5px auto;
+}
+
+.card-list-item {
+  display: flex;
+  justify-content: start;
+}
+
+.item-name {
+  width: 35%;
+}
+
+.item-times {
+  width: 35%
+}
+
+.item-type {
+  width: 30%;
+}
+
+.card-popup {
+  display: flex;
+  justify-self: space-between;
+}
+
+.card-popup-img {
+  width: 180rpx;
+  text-align: center;
+}
+
+.img03 {
+  width: 130rpx;
+  height: 250rpx;
+}
+
+.card-popup-text {
+  width: 500rpx;
+  margin-left: 150rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 45rpx;
+  color: rgba(159, 191, 90, 1);
+}
+
+.card-popup-icon {
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 40rpx;
+  color: rgba(159, 191, 90, 1);
+}
+
+.to-do-cycle {
+  height: 270rpx;
+  display: flex;
+  justify-content: start;
+}
+
+.to-do-cycle-title {
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #646566;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+
+.to-do-cycle-times {
+  width: 600rpx;
+  font-size: 30rpx;
+}
+
+.to-do-type {
+  height: 70rpx;
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: start;
+}
+
+.to-do-type-title {
+  width: 200rpx;
+  color: #646566;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+
+.to-do-type-times {
+  width: 600rpx;
+  font-size: 30rpx;
+}

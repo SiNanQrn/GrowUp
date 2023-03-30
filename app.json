@@ -1,9 +1,8 @@
 {
-  "pages": ["pages/index/index"],
+  "pages": ["pages/list/index", "pages/index/index"],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#D6C1FF",
-    "navigationBarTitleText": "GrowUp",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

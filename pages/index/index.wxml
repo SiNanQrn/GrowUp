@@ -1,20 +1,4 @@
 <!--index.wxml-->
 <view>
-  <van-row>
-    <van-cell-group title="职业成长">
-      <van-field value="{{ value }}" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" />
-    </van-cell-group>
-    <van-cell-group title="健康提升">
-      <van-field value="{{ username }}" clearable label="用户名" placeholder="请输入用户名" />
-    </van-cell-group>
-    <van-cell-group title="兴趣发展">
-      <van-field value="{{ username }}" clearable label="用户名" placeholder="请输入用户名" />
-    </van-cell-group>
-    <van-cell-group title="财务目标">
-      <van-field value="{{ username }}" clearable label="用户名" placeholder="请输入用户名" />
-    </van-cell-group>
-    <van-cell-group title="财务目标">
-      <van-field value="{{ username }}" clearable label="用户名" placeholder="请输入用户名" />
-    </van-cell-group>
-  </van-row>
+  <button>填写你的成长</button>
 </view>

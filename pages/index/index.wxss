@@ -1,7 +1,3 @@
-view {
-  /* background-color: #D6C1FF; */
-}
-
 .formTitle {
   font-size: large;
   text-align: center;
