@@ -22,19 +22,14 @@
       <text class="title-right-word">健康管理</text>
     </view>
     <view class="card-title-left">
-      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" bind:click="showPopup" />
+      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="健康管理" bindtap="showPopup" />
     </view>
   </view>
   <view class="card-list">
-    <view class="card-list-item">
-      <text class="item-name">1、运动</text>
-      <text class="item-times">每天一次</text>
-      <text class="item-type">勾选</text>
-    </view>
-    <view class="card-list-item">
-      <text class="item-name">2、早睡</text>
-      <text class="item-times">每天一次</text>
-      <text class="item-type">勾选</text>
+    <view class="card-list-item" wx:for="{{healthList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <text class="item-name">{{index+1}}、{{item.todoName}}</text>
+      <text class="item-times">{{item.todoCycleName}}</text>
+      <text class="item-type">{{item.todoTypeName}}</text>
     </view>
   </view>
 </view>
@@ -46,7 +41,7 @@
       <text class="title-right-word">职业成长</text>
     </view>
     <view class="card-title-left">
-      <van-icon name="plus" class="title-left-icon" />
+      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="职业成长" bindtap="showPopup" />
     </view>
   </view>
   <view class="card-list">
@@ -63,7 +58,7 @@
       <text class="title-right-word">财务目标</text>
     </view>
     <view class="card-title-left">
-      <van-icon name="plus" class="title-left-icon" />
+      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="财务目标" bindtap="showPopup" />
     </view>
   </view>
   <view class="card-list">
@@ -80,7 +75,7 @@
       <text class="title-right-word">兴趣发展</text>
     </view>
     <view class="card-title-left">
-      <van-icon name="plus" class="title-left-icon" />
+      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="兴趣发展" bindtap="showPopup" />
     </view>
   </view>
   <view class="card-list">
@@ -90,36 +85,36 @@
   </view>
 </view>
 <!-- 弹窗 -->
-<van-popup position="bottom" show="{{ show }}" duration="200" round="5" custom-style="height: 50%" bind:close="onClose">
+<van-popup position="bottom" show="{{ isDetailShow }}" duration="200" round="5" custom-style="height: 50%" bind:close="onClose" touchmove>
   <!-- 图片 -->
   <view class="card-popup">
     <view class="card-popup-img">
       <image class="img03" src="../../images/img03.png"></image>
     </view>
     <view class="card-popup-text">
-      <text>健康管理</text>
+      <text>{{currentTitle}}</text>
     </view>
-    <view class="card-popup-icon">
+    <view class="card-popup-icon" bindtap="clickSubmit">
       <van-icon name="success" />
     </view>
   </view>
   <!-- 表单todo -->
-  <van-field value="{{ value }}" label="TODO名称" placeholder="请输入TODO名称" border="{{ false }}" bind:change="onChange" />
+  <van-field value="{{ todoName }}" label="TODO名称" placeholder="请输入TODO名称" border="{{ false }}" error-message="{{errorMsg}}" required bind:change="onInputChange" />
   <!-- 表单周期 -->
   <view class="to-do-cycle">
     <view class="to-do-cycle-title">
       设置周期
     </view>
     <view class="to-do-cycle-times">
-      <van-radio-group value="{{ radio }}" bind:change="checkCycle">
+      <van-radio-group value="{{ todoCycle }}" bind:change="changeCycle">
         <van-cell-group>
-          <van-cell title="每天一次" clickable data-name="1" bind:click="onClick">
+          <van-cell title="每日一次" clickable data-name="1" bind:click="clickCycle">
             <van-radio name="1" checked-color="#A5D63F" slot="right-icon" />
           </van-cell>
-          <van-cell title="每周一次" clickable data-name="2" bind:click="onClick">
+          <van-cell title="每周一次" clickable data-name="2" bind:click="clickCycle">
             <van-radio name="2" checked-color="#A5D63F" slot="right-icon" />
           </van-cell>
-          <van-cell title="每月一次" clickable data-name="3" bind:click="onClick">
+          <van-cell title="每月一次" clickable data-name="3" bind:click="clickCycle">
             <van-radio name="3" checked-color="#A5D63F" slot="right-icon" />
           </van-cell>
         </van-cell-group>
@@ -132,9 +127,9 @@
       打卡方式
     </view>
     <view class="to-do-type-times">
-      <van-radio-group value="{{ radio }}" bind:change="onChange" direction="horizontal">
-        <van-radio name="1" checked-color="#A5D63F">勾选</van-radio>
-        <van-radio name="2" checked-color="#A5D63F">进度条</van-radio>
+      <van-radio-group value="{{ todoType }}" bind:change="changeType" direction="horizontal">
+        <van-radio name="0" checked-color="#A5D63F">勾选</van-radio>
+        <van-radio name="1" checked-color="#A5D63F">进度条</van-radio>
       </van-radio-group>
     </view>
   </view>
