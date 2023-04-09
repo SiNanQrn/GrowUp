@@ -19,18 +19,6 @@ Page({
     todoType: "0",
     // 健康管理List
     healthList: [
-      //   {
-      //   todoName: "运动运动",
-      //   todoCycle: "2",
-      //   todoCycleName: "每周一次",
-      //   todoType: '1',
-      //   todoTypeName: "进度条",
-      // },
-      // {
-      //   todoName: "早睡早睡",
-      //   todoCycle: "1",
-      //   todoType: '2'
-      // }
     ],
   },
   // 打开弹出层
