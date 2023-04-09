@@ -18,15 +18,14 @@ Page({
     // todo打卡类型
     todoType: "0",
     // 健康管理List
-    healthList: [
-    ],
+    healthList: [],
   },
   // 打开弹出层
   showPopup(e) {
-    console.log("名称", e.currentTarget.dataset.name)
+    console.log("名称", e.currentTarget.dataset.name);
     this.setData({
       currentTitle: e.currentTarget.dataset.name,
-      isDetailShow: true
+      isDetailShow: true,
     });
   },
   // 关闭弹出层
@@ -38,6 +37,19 @@ Page({
     if (e.detail) {
       this.setData({ todoName: e.detail, errorMsg: "" });
     }
+  },
+  getTodoList() {
+    wx.request({
+      url: "http://127.0.0.1:3007/api/getTodo",
+      method: "get",
+      success: (res) => {
+        console.log('res',res);
+        if (res.data.satus === 200) {
+          this.healthList = res.data.data;
+        }
+        // console.log()
+      },
+    });
   },
   // onInputBlur(e) {
   //   console.log('ddd', this.data)
@@ -57,7 +69,7 @@ Page({
   },
   // 选择打卡方式
   changeType(e) {
-    console.log('打卡打卡', e);
+    console.log("打卡打卡", e);
     this.setData({
       todoType: e.detail,
     });
@@ -67,11 +79,17 @@ Page({
     // 周期名称映射
     let todoCycleName = "";
     switch (this.data.todoCycle) {
-      case "1": todoCycleName = "每日一次"; break;
-      case "2": todoCycleName = "每周一次"; break;
-      case "3": todoCycleName = "每月一次"; break
-    };
-    console.log("1111", this.data.todoName)
+      case "1":
+        todoCycleName = "每日一次";
+        break;
+      case "2":
+        todoCycleName = "每周一次";
+        break;
+      case "3":
+        todoCycleName = "每月一次";
+        break;
+    }
+    console.log("1111", this.data.todoName);
     // 如果项目名称为空，则不做任何操作
     if (!this.data.todoName) {
       return;
@@ -83,9 +101,9 @@ Page({
       todoCycle: this.data.todoCycle,
       todoCycleName: todoCycleName,
       todoType: this.data.todoType,
-      todoTypeName: this.data.todoType === "0" ? "勾选" : "进度条"
+      todoTypeName: this.data.todoType === "0" ? "勾选" : "进度条",
     });
-    console.log("打印arr", arr)
+    console.log("打印arr", arr);
 
     // 关闭弹窗
     this.setData({
@@ -93,60 +111,57 @@ Page({
       isDetailShow: false,
       todoName: "",
       todoCycle: "1",
-      todoType: "0"
+      todoType: "0",
     });
   },
 
   // 选择打卡类型
   clickType(e) {
-    console.log('打卡打卡', e.detail);
+    console.log("打卡打卡", e.detail);
     this.setData({
       todoType: e.detail,
     });
   },
 
-
-
-
-
-
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) { },
+  onLoad(options) {
+    this.getTodoList();
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() { },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() { },
+  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() { },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() { },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() { },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() { },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() { },
+  onShareAppMessage() {},
 });
