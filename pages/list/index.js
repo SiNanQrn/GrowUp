@@ -5,20 +5,41 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //
+    currentIndex: -1,
     // 当前弹窗标题
     currentTitle: "",
     // 弹出层显隐
     isDetailShow: false,
     // todo名称
-    todoName: "",
+    listName: "",
     // 校验提示
     errorMsg: "TODO名称未填写1",
     // todo周期
-    todoCycle: "1",
+    times: "1",
     // todo打卡类型
-    todoType: "0",
+    type: "0",
     // 健康管理List
     healthList: [],
+    // 职业成长List
+    jobList: [],
+    // 财务目标List
+    financeList: [],
+    // 兴趣发展List
+    hobbyList: [],
+    // 计划list
+    planList: [],
+  },
+  // 点击效果
+  onRowTap(e) {
+    // 获取被点击的元素索引
+    const index = e.currentTarget.dataset.index;
+    this.setData({ currentIndex: index });
+
+    // 等待 200 毫秒后，恢复行元素的原始样式
+    setTimeout(() => {
+      this.setData({ currentIndex: -1 });
+    }, 200);
   },
   // 打开弹出层
   showPopup(e) {
@@ -26,101 +47,151 @@ Page({
     this.setData({
       currentTitle: e.currentTarget.dataset.name,
       isDetailShow: true,
+      listName: "",
+      times: "1",
+      type: "0",
     });
   },
+
   // 关闭弹出层
   onClose() {
     this.setData({ isDetailShow: false });
   },
+
   // 获取输入TODO名称
   onInputChange(e) {
     if (e.detail) {
-      this.setData({ todoName: e.detail, errorMsg: "" });
+      this.setData({ listName: e.detail, errorMsg: "" });
     }
   },
-  getTodoList() {
-    wx.request({
-      url: "http://127.0.0.1:3007/api/getTodo",
-      method: "get",
-      success: (res) => {
-        console.log('res',res);
-        if (res.data.satus === 200) {
-          this.healthList = res.data.data;
-        }
-        // console.log()
-      },
-    });
-  },
-  // onInputBlur(e) {
-  //   console.log('ddd', this.data)
-  // },
+
   // 切换周期
   changeCycle(e) {
     this.setData({
-      todoCycle: e.detail,
+      times: e.detail,
     });
   },
+
   // 选择周期
   clickCycle(event) {
     const { name } = event.currentTarget.dataset;
     this.setData({
-      todoCycle: name,
+      times: name,
     });
   },
   // 选择打卡方式
   changeType(e) {
     console.log("打卡打卡", e);
     this.setData({
-      todoType: e.detail,
+      type: e.detail,
     });
   },
   // 提交弹窗内容
-  clickSubmit() {
+  clickSubmit(data) {
+    let classCode = 0;
+    switch (data.currentTarget.dataset.value) {
+      case "健康管理":
+        classCode = 1;
+        break;
+      case "职业成长":
+        classCode = 2;
+        break;
+      case "财务目标":
+        classCode = 3;
+        break;
+      case "兴趣发展":
+        classCode = 4;
+    }
+    console.log("classCode", classCode);
     // 周期名称映射
-    let todoCycleName = "";
-    switch (this.data.todoCycle) {
+    let timesName = "";
+    switch (this.data.times) {
       case "1":
-        todoCycleName = "每日一次";
+        timesName = "每日一次";
         break;
       case "2":
-        todoCycleName = "每周一次";
+        timesName = "每周一次";
         break;
       case "3":
-        todoCycleName = "每月一次";
+        timesName = "每月一次";
         break;
     }
-    console.log("1111", this.data.todoName);
     // 如果项目名称为空，则不做任何操作
-    if (!this.data.todoName) {
+    if (!this.data.listName) {
       return;
     }
     // 新增项目
-    let arr = this.data.healthList;
-    arr.push({
-      todoName: this.data.todoName,
-      todoCycle: this.data.todoCycle,
-      todoCycleName: todoCycleName,
-      todoType: this.data.todoType,
-      todoTypeName: this.data.todoType === "0" ? "勾选" : "进度条",
-    });
-    console.log("打印arr", arr);
-
-    // 关闭弹窗
-    this.setData({
-      healthList: arr,
-      isDetailShow: false,
-      todoName: "",
-      todoCycle: "1",
-      todoType: "0",
-    });
+    let item = {
+      listName: this.data.listName,
+      times: this.data.times,
+      timesName: timesName,
+      type: this.data.type,
+      typeName: this.data.type === "0" ? "勾选" : "进度条",
+      classificationCode: classCode,
+      classificationName: data.currentTarget.dataset.value,
+    };
+    console.log(item);
+    this.insertTodoList(item);
   },
-
+  // 删除
+  deleteItem(e) {
+    let item = e.currentTarget.dataset.item;
+    console.log("item", item);
+    this.deleteTodoList(item);
+  },
   // 选择打卡类型
   clickType(e) {
     console.log("打卡打卡", e.detail);
     this.setData({
-      todoType: e.detail,
+      type: e.detail,
     });
+  },
+
+  // 获取 TODO list 接口
+  getTodoList() {
+    wx.request({
+      url: "http://192.168.1.104:3007/api/getTodo",
+      method: "get",
+      success: (res) => {
+        console.log("res", res);
+        if (res.data.status === 200) {
+          this.setData({
+            healthList: res.data.data.filter((o) => o.classificationCode === 1),
+            jobList: res.data.data.filter((o) => o.classificationCode === 2),
+            financeList: res.data.data.filter(
+              (o) => o.classificationCode === 3
+            ),
+            hobbyList: res.data.data.filter((o) => o.classificationCode === 4),
+          });
+        }
+      },
+    });
+  },
+
+  // 新增 TODO list 接口
+  insertTodoList(data) {
+    wx.request({
+      url: "http://192.168.1.104:3007/api/insertTodo",
+      method: "POST",
+      data: data,
+      header: {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      success: (res) => {
+        console.log("res", res);
+        if (res.data.status === 200) {
+          this.setData({
+            isDetailShow: false,
+          });
+          // 刷新Plan list
+          this.getTodoList();
+        }
+      },
+    });
+  },
+  // 删除 TODO list 接口
+  deleteTodoList(data) {
+    
   },
 
   /**
@@ -129,39 +200,4 @@ Page({
   onLoad(options) {
     this.getTodoList();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
 });

@@ -66,19 +66,35 @@
 
 .card-list-item {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
+  align-items: center;
+  height: 65rpx;
+  width: 550rpx;
+}
+
+.row-clicked {
+  background-color: #f5f5f5;
 }
 
 .item-name {
-  width: 35%;
+  /* width: 30%; */
+  /* font-size: 29rpx; */
 }
 
 .item-times {
-  width: 35%
+  /* width: 17%; */
+  font-size: 25rpx;
 }
 
 .item-type {
   width: 30%;
+  font-size: 25rpx;
+}
+
+.item-delete {
+  text-align: right;
+  flex-grow: 1;
+  margin-left: auto;
 }
 
 .card-popup {
