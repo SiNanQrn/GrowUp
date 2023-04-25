@@ -1,146 +1,157 @@
 <!-- Title -->
-<van-row>
-  <van-col span="6" offset="1">
-    <van-icon name="arrow-left" />
-  </van-col>
-  <van-col span="17" class="list-title">Make your plan</van-col>
-</van-row>
-<!-- 图片 -->
-<view class="list-image">
-  <view>
-    <image class="img01" src="../../images/img02.png"></image>
-  </view>
-  <view>
-    <image class="img02" src="../../images/img01.png"></image>
-  </view>
-</view>
-<!-- 健康管理 -->
-<view class="card">
-  <view class="card-title">
-    <view class="card-title-right">
-      <van-icon name="shield-o" class="title-right-icon" />
-      <text class="title-right-word">健康管理</text>
+<view class="list">
+  <van-row>
+    <van-col span="24" class="list-title">Make your plan</van-col>
+  </van-row>
+  <!-- 图片 -->
+  <view class="list-image">
+    <view>
+      <image class="img01" src="../../images/img02.png"></image>
     </view>
-    <view class="card-title-left">
-      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="健康管理" bindtap="showPopup" />
+    <view>
+      <image class="img02" src="../../images/img01.png"></image>
     </view>
   </view>
-  <view class="card-list">
-    <view class="card-list-item {{index === currentIndex ? 'row-clicked' : ''}}" wx:for="{{healthList}}" wx:for-item="item" wx:for-index="index" wx:key="index" data-index="{{index}}" bindtap="onRowTap">
-      <text>{{index+1}}、</text>
-      <text class="item-name">{{item.listName}}</text>/
-      <text class="item-times">{{item.timesName}}</text>/
-      <text class="item-type">{{item.typeName}}</text>
-      <view class="item-delete">
-        <van-icon name="cross" data-item="{{item}}" bindtap="deleteItem" />
+  <!-- 健康管理 -->
+  <view class="card">
+    <view class="card-title">
+      <view class="card-title-right">
+        <van-icon name="shield-o" class="title-right-icon" />
+        <text class="title-right-word">健康管理</text>
+      </view>
+      <view class="card-title-left">
+        <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="健康管理" bindtap="showPopup" />
+      </view>
+    </view>
+    <view class="card-list">
+      <view class="card-list-item {{index === currentIndex ? 'row-clicked' : ''}}" wx:for="{{healthList}}" wx:for-item="item" wx:for-index="index" wx:key="index" data-index="{{index}}" bindtap="onRowTap">
+        <text>{{index+1}}、</text>
+        <text class="item-name">{{item.listName}}</text>/
+        <text class="item-times">{{item.timesName}}</text>/
+        <text class="item-type">{{item.typeName}}</text>
+        <view class="item-delete">
+          <van-icon name="cross" data-item="{{item}}" bindtap="deleteItem" />
+        </view>
       </view>
     </view>
   </view>
+  <!-- 职业成长 -->
+  <view class="card">
+    <view class="card-title">
+      <view class="card-title-right">
+        <van-icon name="balance-list-o" class="title-right-icon" />
+        <text class="title-right-word">职业成长</text>
+      </view>
+      <view class="card-title-left">
+        <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="职业成长" bindtap="showPopup" />
+      </view>
+    </view>
+    <view class="card-list">
+      <view class="card-list-item" wx:for="{{jobList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <text>{{index+1}}、</text>
+        <text class="item-name">{{item.listName}}</text>/
+        <text class="item-times">{{item.timesName}}</text>/
+        <text class="item-type">{{item.typeName}}</text>
+        <view class="item-delete">
+          <van-icon name="cross" data-item="{{item}}" bindtap="deleteItem" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 财务目标 -->
+  <view class="card">
+    <view class="card-title">
+      <view class="card-title-right">
+        <van-icon name="balance-o" class="title-right-icon" />
+        <text class="title-right-word">财务目标</text>
+      </view>
+      <view class="card-title-left">
+        <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="财务目标" bindtap="showPopup" />
+      </view>
+    </view>
+    <view class="card-list">
+      <view class="card-list-item" wx:for="{{financeList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <text>{{index+1}}、</text>
+        <text class="item-name">{{item.listName}}</text>/
+        <text class="item-times">{{item.timesName}}</text>/
+        <text class="item-type">{{item.typeName}}</text>
+        <view class="item-delete">
+          <van-icon name="cross" data-item="{{item}}" bindtap="deleteItem" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 兴趣发展 -->
+  <view class="card">
+    <view class="card-title">
+      <view class="card-title-right">
+        <van-icon name="audio" class="title-right-icon" />
+        <text class="title-right-word">兴趣发展</text>
+      </view>
+      <view class="card-title-left">
+        <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="兴趣发展" bindtap="showPopup" />
+      </view>
+    </view>
+    <view class="card-list">
+      <view class="card-list-item" wx:for="{{hobbyList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <text>{{index+1}}、</text>
+        <text class="item-name">{{item.listName}}</text>/
+        <text class="item-times">{{item.timesName}}</text>/
+        <text class="item-type">{{item.typeName}}</text>
+        <view class="item-delete">
+          <van-icon name="cross" data-item="{{item}}" bindtap="deleteItem" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 弹窗 -->
+  <van-popup position="bottom" show="{{ isDetailShow }}" duration="200" round="5" custom-style="height: 50%" bind:close="onClose" touchmove>
+    <!-- 图片 -->
+    <view class="card-popup">
+      <view class="card-popup-img">
+        <image class="img03" src="../../images/img03.png"></image>
+      </view>
+      <view class="card-popup-text">
+        <text>{{currentTitle}}</text>
+      </view>
+      <view class="card-popup-icon" data-value="{{currentTitle}}" bindtap="clickSubmit">
+        <van-icon name="success" />
+      </view>
+    </view>
+    <!-- 表单todo -->
+    <van-field value="{{ listName }}" label="TODO名称" placeholder="请输入TODO名称" border="{{ false }}" error-message="{{errorMsg}}" required bind:change="onInputChange" />
+    <!-- 表单周期 -->
+    <view class="to-do-cycle">
+      <view class="to-do-cycle-title">
+        设置周期
+      </view>
+      <view class="to-do-cycle-times">
+        <van-radio-group value="{{ times }}" bind:change="changeCycle">
+          <van-cell-group>
+            <van-cell title="每日一次" clickable data-name="1" bind:click="clickCycle">
+              <van-radio name="1" checked-color="#A5D63F" slot="right-icon" />
+            </van-cell>
+            <van-cell title="每周一次" clickable data-name="2" bind:click="clickCycle">
+              <van-radio name="2" checked-color="#A5D63F" slot="right-icon" />
+            </van-cell>
+            <van-cell title="每月一次" clickable data-name="3" bind:click="clickCycle">
+              <van-radio name="3" checked-color="#A5D63F" slot="right-icon" />
+            </van-cell>
+          </van-cell-group>
+        </van-radio-group>
+      </view>
+    </view>
+    <!-- 表单打卡方式 -->
+    <view class="to-do-type">
+      <view class="to-do-type-title">
+        打卡方式
+      </view>
+      <view class="to-do-type-times">
+        <van-radio-group value="{{ type }}" bind:change="changeType" direction="horizontal">
+          <van-radio name="0" checked-color="#A5D63F">勾选</van-radio>
+          <van-radio name="1" checked-color="#A5D63F">进度条</van-radio>
+        </van-radio-group>
+      </view>
+    </view>
+  </van-popup>
 </view>
-<!-- 职业成长 -->
-<view class="card">
-  <view class="card-title">
-    <view class="card-title-right">
-      <van-icon name="balance-list-o" class="title-right-icon" />
-      <text class="title-right-word">职业成长</text>
-    </view>
-    <view class="card-title-left">
-      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="职业成长" bindtap="showPopup" />
-    </view>
-  </view>
-  <view class="card-list">
-    <view class="card-list-item" wx:for="{{jobList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-      <text class="item-name">{{index+1}}、{{item.listName}}</text>
-      <text class="item-times">{{item.timesName}}</text>
-      <text class="item-type">{{item.typeName}}</text>
-    </view>
-  </view>
-</view>
-<!-- 财务目标 -->
-<view class="card">
-  <view class="card-title">
-    <view class="card-title-right">
-      <van-icon name="balance-o" class="title-right-icon" />
-      <text class="title-right-word">财务目标</text>
-    </view>
-    <view class="card-title-left">
-      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="财务目标" bindtap="showPopup" />
-    </view>
-  </view>
-  <view class="card-list">
-    <view class="card-list-item" wx:for="{{financeList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-      <text class="item-name">{{index+1}}、{{item.listName}}</text>
-      <text class="item-times">{{item.timesName}}</text>
-      <text class="item-type">{{item.typeName}}</text>
-    </view>
-  </view>
-</view>
-<!-- 兴趣发展 -->
-<view class="card">
-  <view class="card-title">
-    <view class="card-title-right">
-      <van-icon name="audio" class="title-right-icon" />
-      <text class="title-right-word">兴趣发展</text>
-    </view>
-    <view class="card-title-left">
-      <van-icon name="plus" class="title-left-icon" custom-style="height: 20%" data-name="兴趣发展" bindtap="showPopup" />
-    </view>
-  </view>
-  <view class="card-list">
-    <view class="card-list-item" wx:for="{{hobbyList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-      <text class="item-name">{{index+1}}、{{item.listName}}</text>
-      <text class="item-times">{{item.timesName}}</text>
-      <text class="item-type">{{item.typeName}}</text>
-    </view>
-  </view>
-</view>
-<!-- 弹窗 -->
-<van-popup position="bottom" show="{{ isDetailShow }}" duration="200" round="5" custom-style="height: 50%" bind:close="onClose" touchmove>
-  <!-- 图片 -->
-  <view class="card-popup">
-    <view class="card-popup-img">
-      <image class="img03" src="../../images/img03.png"></image>
-    </view>
-    <view class="card-popup-text">
-      <text>{{currentTitle}}</text>
-    </view>
-    <view class="card-popup-icon" data-value="{{currentTitle}}" bindtap="clickSubmit">
-      <van-icon name="success" />
-    </view>
-  </view>
-  <!-- 表单todo -->
-  <van-field value="{{ listName }}" label="TODO名称" placeholder="请输入TODO名称" border="{{ false }}" error-message="{{errorMsg}}" required bind:change="onInputChange" />
-  <!-- 表单周期 -->
-  <view class="to-do-cycle">
-    <view class="to-do-cycle-title">
-      设置周期
-    </view>
-    <view class="to-do-cycle-times">
-      <van-radio-group value="{{ times }}" bind:change="changeCycle">
-        <van-cell-group>
-          <van-cell title="每日一次" clickable data-name="1" bind:click="clickCycle">
-            <van-radio name="1" checked-color="#A5D63F" slot="right-icon" />
-          </van-cell>
-          <van-cell title="每周一次" clickable data-name="2" bind:click="clickCycle">
-            <van-radio name="2" checked-color="#A5D63F" slot="right-icon" />
-          </van-cell>
-          <van-cell title="每月一次" clickable data-name="3" bind:click="clickCycle">
-            <van-radio name="3" checked-color="#A5D63F" slot="right-icon" />
-          </van-cell>
-        </van-cell-group>
-      </van-radio-group>
-    </view>
-  </view>
-  <!-- 表单打卡方式 -->
-  <view class="to-do-type">
-    <view class="to-do-type-title">
-      打卡方式
-    </view>
-    <view class="to-do-type-times">
-      <van-radio-group value="{{ type }}" bind:change="changeType" direction="horizontal">
-        <van-radio name="0" checked-color="#A5D63F">勾选</van-radio>
-        <van-radio name="1" checked-color="#A5D63F">进度条</van-radio>
-      </van-radio-group>
-    </view>
-  </view>
-</van-popup>

@@ -1,5 +1,4 @@
 // pages/list/index.js
-// import Toast from "@vant/weapp/toast/toast";
 Page({
   /**
    * 页面的初始数据
@@ -130,15 +129,17 @@ Page({
       classificationCode: classCode,
       classificationName: data.currentTarget.dataset.value,
     };
-    console.log(item);
+    console.log("SN 新增接口入参:", item);
     this.insertTodoList(item);
   },
+
   // 删除
   deleteItem(e) {
-    let item = e.currentTarget.dataset.item;
-    console.log("item", item);
-    this.deleteTodoList(item);
+    let id = Number(e.currentTarget.dataset.item.id);
+    console.log("删除接口入参", id);
+    this.deleteTodoList(id);
   },
+
   // 选择打卡类型
   clickType(e) {
     console.log("打卡打卡", e.detail);
@@ -153,7 +154,7 @@ Page({
       url: "http://192.168.1.104:3007/api/getTodo",
       method: "get",
       success: (res) => {
-        console.log("res", res);
+        console.log("SN 获取TODO list数据", res);
         if (res.data.status === 200) {
           this.setData({
             healthList: res.data.data.filter((o) => o.classificationCode === 1),
@@ -178,7 +179,7 @@ Page({
         "content-type": "application/x-www-form-urlencoded",
       },
       success: (res) => {
-        console.log("res", res);
+        console.log("SN 新增TODO list 接口", res);
         if (res.data.status === 200) {
           this.setData({
             isDetailShow: false,
@@ -189,9 +190,20 @@ Page({
       },
     });
   },
+
   // 删除 TODO list 接口
-  deleteTodoList(data) {
-    
+  deleteTodoList(id) {
+    wx.request({
+      url: `http://192.168.1.104:3007/api/deleteTodo/${id}`,
+      method: "Get",
+      success: (res) => {
+        console.log("SN 删除TODO list 接口", res);
+        if (res.data.status === 200) {
+          // 刷新Plan list
+          this.getTodoList();
+        }
+      },
+    });
   },
 
   /**

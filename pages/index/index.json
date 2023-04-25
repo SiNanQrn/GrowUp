@@ -1,10 +1,12 @@
 {
   "usingComponents": {
-    "van-field": "@vant/weapp/field/index",
-    "van-row": "@vant/weapp/row/index",
-    "van-col": "@vant/weapp/col/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-cell-group": "@vant/weapp/cell-group/index"
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-icon": "@vant/weapp/icon/index"
   },
-  "styleIsolation": "shared"
+  "styleIsolation": "shared",
+  "navigationBarBackgroundColor": "#AAD97C",
+  "disableScroll": true
 }

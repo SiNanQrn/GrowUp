@@ -1,10 +1,15 @@
 /* pages/list/index.wxss */
+.list {
+  overflow: auto;
+}
+
 .list-title {
   font-size: 40rpx;
   font-weight: 700;
   letter-spacing: 0.1rpx;
   color: rgba(159, 191, 90, 1);
   font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
 }
 
 .list-image {

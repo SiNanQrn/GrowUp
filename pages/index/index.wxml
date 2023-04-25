@@ -1,4 +1,24 @@
 <!--index.wxml-->
-<view>
-  <button>填写你的成长</button>
+<view id="day">
+  <view class="calendar_view">
+    <van-calendar color="" poppable="{{ false }}" show-mark="{{false}}" show-title="{{false}}" show-confirm="{{ false }}" class="calendar" row-height="45" readonly="{{true}}" />
+  </view>
+  <!-- 弹窗 -->
+  <view class="day_list">
+    <view class="day_list_title">
+      待完成事项
+    </view>
+    <view class="day_item">
+      <view class="list_item" wx:for="{{dayItemList}}" wx:for-item="item" wx:key="id">
+        <van-checkbox class="list_item_check" value="{{item.isFinish === 'true' ? true : false}}" checked-color="#aacc88" shape="square" data-item="{{item}}" bind:change="onChange"> {{item.listName}}
+        </van-checkbox>
+        <view wx:if="{{condition}}">
+          xx
+        </view>
+      </view>
+    </view>
+    <view class="add">
+      <van-icon name="add" bindtap="showListDetail" />
+    </view>
+  </view>
 </view>

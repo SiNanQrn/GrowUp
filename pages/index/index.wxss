@@ -1,6 +1,115 @@
-.formTitle {
-  font-size: large;
-  text-align: center;
+#day {
+  background-color: #AAD97C !important;
+}
+
+.calendar_view {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.van-calendar__header {
+  letter-spacing: 5rpx;
+  box-shadow: none !important;
+  background-color: #AAD97C !important;
+}
+
+/* .van-calendar__month-title {
+  text-align: left !important;
+  font-size: 45rpx !important;
+  color: aliceblue;
+} */
+
+.van-calendar__header-subtitle {
+  text-align: left !important;
+  font-size: 45rpx !important;
+  color: aliceblue;
+}
+
+.van-calendar__weekdays .van-calendar__weekday {
+  color: rgba(255, 255, 255, 0.616);
+  font-size: 30rpx !important;
+  font-weight: bold;
+}
+
+.van-calendar__day--disabled {
+  color: rgba(255, 255, 255, 0.603) !important;
+  font-size: 30rpx !important;
+  font-weight: bold;
+}
+
+.van-calendar__day {
+  color: rgba(255, 255, 255, 1);
+  font-size: 30rpx !important;
+  font-weight: bold;
+}
+
+.van-calendar__body {
+  background-color: #AAD97C !important;
+}
+
+.van-calendar__selected-day {
+  color: #AAD97C !important;
+  font-size: 38rpx;
+  background-color: aliceblue !important;
+  height: 90rpx !important;
+  border-radius: 50px !important;
+}
+
+.calendar {
+  --calendar-height: 620rpx;
+}
+
+.van-checkbox__icon--checked {
+  background-color: none !important;
+}
+
+.day_list {
+  margin-top: 10px;
+  height: 830rpx;
+  overflow: auto;
+  border-radius: 50rpx;
+  background-color: #ffff;
+  box-shadow: 0px -2px 12px 0px rgba(0, 0, 0, 0.35);
+}
+
+.day_list_title {
   height: 100rpx;
   line-height: 100rpx;
+  font-size: 45rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #8fbb64;
+  position: fixed;
+  top: 1;
+  left: 0;
+  width: 100%;
+  background-color: rgb(255, 254, 254);
+}
+
+.day_item {
+  margin-top: 100rpx;
+}
+
+.list_item {
+  width: 85%;
+  height: 80rpx;
+  margin: 0 auto;
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.list_item_check {
+  width: 80%;
+}
+
+.van-checkbox__icon {
+  border: 2px solid #aacc88 !important;
+  border-radius: 5px !important;
+}
+
+.add {
+  font-size: 75rpx;
+  height: 100rpx;
+  color: #8fbb64;
+  margin: 5rpx 10rpx 5rpx 600rpx;
 }
